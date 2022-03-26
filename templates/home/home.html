@@ -1,0 +1,34 @@
+{% load static %}
+
+{% comment %} <!Doctype html> {% endcomment %}
+<html>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <h1>
+        Notice website 
+
+    </h1>
+    <body> 
+      {% for value in data %}
+           <div class="container">
+              <a href="{% url 'idshow'  postid=value.id %}"> 
+                 
+                   {% comment %} <div class="box"> {% endcomment %}
+                      <div class="title"> 
+                        {{ value.title }}
+                      </div>  
+
+                    {% comment %} </div> {% endcomment %}
+                  
+            
+              </a> 
+            </div>
+                {% comment %} <br> {% endcomment %}
+           {% comment %} {{ value.created_date }} <br> {% endcomment %}
+           {% comment %} {{ value.body }} <br> {% endcomment %}
+           {% comment %} <img style="height: 300px;"   src="{{ value.image.url }}" >  {% endcomment %}
+           {% comment %} <br> {% endcomment %}
+           {% comment %} <a href="/comment">comment</a> {% endcomment %}
+           {% comment %} <br> {% endcomment %}
+      {% endfor %}
+    </body>
+</html>

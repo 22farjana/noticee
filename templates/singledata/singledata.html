@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/singledata.css' %}"/>
+
+<h2>
+    {{ single.title }}
+</h2>
+<body>
+  <div class=content>
+   <div class=time> 
+     {{ single.created_date }}
+   </div> 
+    <br> 
+    <div class=paragraph>
+      {{ single.body }}
+    </div>
+     <br> 
+    <img style="height: 300px;"   src="{{ single.image.url }}" >  
+           {% comment %} <br> {% endcomment %}
+           {% comment %} <a href="/comment">comment</a> {% endcomment %}
+    <h3> Comment </h3>
+    {%for choice in single.comment_set.all %}
+          
+        <h5> {{ choice.body }}</h5>
+
+    {%endfor%}
+
+     <form method="POST" action="">
+        {% csrf_token %}
+          {% comment %} <textarea name="message" rows="2" cols="90"></textarea><br><br> {% endcomment %}
+           {{ form }}  <br><br>
+        <button>Submit</button>
+    </form>
+  </div>
+</body>
